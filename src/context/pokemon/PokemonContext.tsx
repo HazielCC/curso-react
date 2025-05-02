@@ -1,4 +1,11 @@
 import { createContext } from "react";
 
-const PokemonContext =createContext("PokemonContext");
+interface PokemonContextType {
+  getPokemons: () => Promise<void>;
+}
+
+const PokemonContext = createContext<PokemonContextType>({
+  getPokemons: async () => {}
+});
+
 export default PokemonContext;
