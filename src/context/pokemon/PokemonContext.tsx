@@ -1,11 +1,20 @@
-import { createContext } from "react";
+import {createContext} from "react";
+
+interface Pokemon {
+    name: string;
+    url: string;
+}
 
 interface PokemonContextType {
-  getPokemons: () => Promise<void>;
+    getPokemons: () => Promise<void>;
+    pokemons?: Pokemon[];
 }
 
 const PokemonContext = createContext<PokemonContextType>({
-  getPokemons: async () => {}
+    // Default implementation, can be overridden by provider
+    getPokemons: async () => {
+    },
+    pokemons: [],
 });
 
 export default PokemonContext;

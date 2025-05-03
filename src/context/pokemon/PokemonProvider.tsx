@@ -1,16 +1,14 @@
-import { ApiCall } from "../../api/ApiCall";
-import {useState} from "react";
+import {ApiCall} from "../../api/ApiCall";
+import {ReactNode, useState} from "react";
 import PokemonContext from "./PokemonContext";
 
-import { ReactNode } from "react";
-
-export function PokemonProvider({children}: {children: ReactNode}) {
+export function PokemonProvider({children}: { children: ReactNode }) {
     const [pokemons, setPokemons] = useState([]);
 
-    const getPokemons =async () => {
+    const getPokemons = async () => {
         try {
-            const pokemons = await ApiCall("https://pokeapi.co/api/v2/pokemon/ditto")
-            setPokemons(pokemons);
+            const response = await ApiCall("https://pokeapi.co/api/v2/ability/?limit=100&offset=100")
+            setPokemons(response.results);
         } catch (error) {
             console.error("Error fetching pokemons:", error);
             setPokemons([])
@@ -18,7 +16,7 @@ export function PokemonProvider({children}: {children: ReactNode}) {
     }
 
     return (
-        <PokemonContext.Provider value={{getPokemons}}>
+        <PokemonContext.Provider value={{getPokemons, pokemons}}>
             {children}
         </PokemonContext.Provider>
     );
