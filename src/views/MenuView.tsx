@@ -5,9 +5,10 @@ export const MenuView = () => {
     const {getPokemons, pokemons} = useContext(PokemonContext);
 
     useEffect(() => {
-        getPokemons().catch(console.error);
+        getPokemons().catch(null);
     }, [getPokemons]);
 
+    // En el contexto donde se define getPokemons:
     console.log(pokemons)
     return (
         <div>
