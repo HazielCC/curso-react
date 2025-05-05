@@ -1,16 +1,8 @@
-import {useContext, useEffect} from "react";
-import PokemonContext from "../context/pokemon/PokemonContext";
 import {Link} from "react-router-dom";
 import {paths} from "../routes/paths.tsx";
 
 export const MenuView = () => {
-    const {getPokemons, pokemons} = useContext(PokemonContext);
 
-    useEffect(() => {
-        getPokemons().catch(null);
-    }, [getPokemons]);
-
-    console.log(pokemons);
 
     return (
         <div>
