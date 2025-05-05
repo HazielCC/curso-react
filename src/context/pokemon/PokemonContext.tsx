@@ -1,11 +1,7 @@
 import {createContext} from "react";
+import {Pokemon} from "../../interfaces/pokemon/PokemonInterfaces";
 
-interface Pokemon {
-    name: string;
-    url: string;
-}
-
-interface PokemonContextType {
+export interface PokemonContextType {
     getPokemons: () => Promise<void>;
     pokemons?: Pokemon[];
 }
