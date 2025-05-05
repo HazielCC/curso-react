@@ -4,10 +4,13 @@ import {MenuView} from "../views/MenuView.tsx";
 import {PokemonView} from "../views/pokemon/PokemonView.tsx";
 import {paths} from "./paths.tsx";
 import {PokemonDetailView} from "../views/pokemon/PokemonDetailView.tsx";
+import {ScrollToTop} from "../components/ScrollToTop.tsx";
 
 export const RoutesComponent = () => {
     return (
         <BrowserRouter>
+            <ScrollToTop/>
+
             <Routes>
                 <Route path={paths.home} element={<MenuView/>}/>
 
