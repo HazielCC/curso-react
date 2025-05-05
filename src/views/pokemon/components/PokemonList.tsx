@@ -15,8 +15,6 @@ export const PokemonList = ({pokemons}: { pokemons: Pokemon[] }) => {
                     )
                 )}
             </div>
-
-
         </div>
     );
 };

@@ -9,7 +9,6 @@ export const PokemonView = () => {
         getPokemons().catch(null);
     }, [getPokemons]);
 
-
     return (
         <div>
             <h1>Pokémon</h1>
