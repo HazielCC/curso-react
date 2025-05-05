@@ -1,12 +1,12 @@
 import './App.css'
 import {PokemonProvider} from './context/pokemon/PokemonProvider'
-import {MenuView} from './views/MenuView'
+import {RoutesComponent} from "./routes/RoutesComponent.tsx";
 
 function App() {
     return (
         <div className="App">
             <PokemonProvider>
-                <MenuView/>
+                <RoutesComponent/>
             </PokemonProvider>
         </div>
     )
