@@ -3,11 +3,20 @@ import PokemonContext from "../../context/pokemon/PokemonContext.tsx";
 import {PokemonList} from "./components/PokemonList.tsx";
 
 export const PokemonView = () => {
-    const {getPokemons, pokemons} = useContext(PokemonContext);
+    const {getPokemons, pokemons, loading} = useContext(PokemonContext);
 
     useEffect(() => {
         getPokemons().catch(null);
     }, [getPokemons]);
+
+    // Pantalla de cargando
+    if (loading) {
+        return (
+            <div>
+                <h2>Cargando...</h2>
+            </div>
+        );
+    }
 
     return (
         <div>

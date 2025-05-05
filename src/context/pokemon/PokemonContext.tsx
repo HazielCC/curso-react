@@ -5,8 +5,9 @@ import {PokemonDetailInterface} from "../../interfaces/pokemon/PokemonDetailInte
 export interface PokemonContextType {
     getPokemons: () => Promise<void>;
     pokemons?: Pokemon[];
-    getPokemonsById: () => Promise<void>;
-    pokemon?: PokemonDetailInterface[];
+    getPokemonsById: (id: string) => Promise<void>;
+    pokemonDetail?: PokemonDetailInterface | null; // Cambiado de PokemonDetailInterface[] a PokemonDetailInterface | null
+    loading: boolean;
 }
 
 const PokemonContext = createContext<PokemonContextType>({
@@ -17,7 +18,8 @@ const PokemonContext = createContext<PokemonContextType>({
     // Default implementation, can be overridden by provider
     getPokemonsById: async () => {
     },
-    pokemon: [],
+    pokemonDetail: null,
+    loading: false,
 });
 
 export default PokemonContext;
