@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom";
 import {useContext, useEffect} from "react";
 import PokemonContext from "../../context/pokemon/PokemonContext.tsx";
 import {PokemonStats} from "./components/PokemonStats.tsx";
+import {Loading} from "../../components/Loading.tsx";
 
 export const PokemonDetailView = () => {
     const {getPokemonsById, pokemonDetail, loading} = useContext(PokemonContext);
@@ -18,11 +19,7 @@ export const PokemonDetailView = () => {
 
     // Pantalla de cargando
     if (loading) {
-        return (
-            <div>
-                <h2>Cargando...</h2>
-            </div>
-        );
+        return <Loading message="Cargando detalles del Pokemon"/>
     }
 
     // Muestra la información del pokemon

@@ -1,9 +1,11 @@
 import {useContext, useEffect} from "react";
 import PokemonContext from "../../context/pokemon/PokemonContext.tsx";
 import {PokemonList} from "./components/PokemonList.tsx";
+import {Loading} from "../../components/Loading.tsx";
+import {ErrorMessage} from "../../components/ErrorMessage.tsx";
 
 export const PokemonView = () => {
-    const {getPokemons, pokemons, loading} = useContext(PokemonContext);
+    const {getPokemons, pokemons, loading, isError, errorMessage} = useContext(PokemonContext);
 
     useEffect(() => {
         getPokemons().catch(null);
@@ -11,19 +13,16 @@ export const PokemonView = () => {
 
     // Pantalla de cargando
     if (loading) {
-        return (
-            <div>
-                <h2>Cargando...</h2>
-            </div>
-        );
+        return <Loading message="Cargando todos los Pokemon"/>
     }
-
     return (
         <div>
-            <h1>Pokémon</h1>
-
-            {/* Se muestra la lista de Pokemons en pantalla */}
-            <PokemonList pokemons={pokemons ?? []}/>
+            {isError ? <ErrorMessage message={errorMessage ?? "Ocurrió un error"}/> : (
+                <>
+                    <h1>Pokémon</h1>
+                    <PokemonList pokemons={pokemons ?? []}/>
+                </>
+            )}
         </div>
     );
 };

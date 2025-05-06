@@ -8,6 +8,10 @@ export interface PokemonContextType {
     getPokemonsById: (id: string) => Promise<void>;
     pokemonDetail?: PokemonDetailInterface | null; // Cambiado de PokemonDetailInterface[] a PokemonDetailInterface | null
     loading: boolean;
+
+    // Error handling
+    isError?: boolean;
+    errorMessage?: string;
 }
 
 const PokemonContext = createContext<PokemonContextType>({
@@ -20,6 +24,9 @@ const PokemonContext = createContext<PokemonContextType>({
     },
     pokemonDetail: null,
     loading: false,
+    // Error handling
+    isError: false,
+    errorMessage: "",
 });
 
 export default PokemonContext;

@@ -7,14 +7,19 @@ export function PokemonProvider({children}: { children: ReactNode }) {
     const [pokemons, setPokemons] = useState([]);
     const [pokemonDetail, setPokemonDetail] = useState<PokemonDetailInterface | null>(null);
     const [loading, setLoading] = useState(false);
+    // Error message
+    const [errorMessage, setErrorMessage] = useState("");
+    const [isError, setIsError] = useState(false);
     const getPokemons = useCallback(async (): Promise<void> => {
         try {
             setLoading(true);
+            setIsError(false);
             const response = await ApiCall("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
             setPokemons(response.results);
         } catch (error) {
-            console.error("Error fetching pokemons:", error);
             setPokemons([])
+            setIsError(true);
+            setErrorMessage("Error fetching pokemons: " + error);
         } finally {
             setLoading(false);
         }
@@ -28,11 +33,14 @@ export function PokemonProvider({children}: { children: ReactNode }) {
         }
         try {
             setLoading(true);
+            setIsError(false);
+
             const response = await ApiCall(`https://pokeapi.co/api/v2/pokemon/${id}`)
             setPokemonDetail(response);
         } catch (error) {
-            console.error("Error fetching pokemon by id:", error);
             setPokemonDetail(null)
+            setIsError(true);
+            setErrorMessage("Error fetching pokemon by id" + error);
         } finally {
             setLoading(false);
         }
@@ -44,7 +52,11 @@ export function PokemonProvider({children}: { children: ReactNode }) {
             pokemons,
             getPokemonsById,
             pokemonDetail,
-            loading
+            loading,
+
+            // Error handling
+            isError,
+            errorMessage
         }}>
             {children}
         </PokemonContext.Provider>
