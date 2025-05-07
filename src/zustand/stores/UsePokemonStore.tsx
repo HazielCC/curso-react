@@ -1,7 +1,21 @@
 import {create} from "zustand/react";
 import {ApiCall} from "../../api/ApiCall.tsx";
+import {Pokemon} from "../../interfaces/pokemon/PokemonInterfaces.tsx";
+import {PokemonDetailInterface} from "../../interfaces/pokemon/PokemonDetailInterfaces.tsx";
 
-export const UsePokemonStore = create((set, get) => ({
+export interface PokemonContextType {
+    getPokemons: () => Promise<void>;
+    pokemons?: Pokemon[];
+    getPokemonsById: (id: string) => Promise<void>;
+    pokemonDetail?: PokemonDetailInterface | null; // Cambiado de PokemonDetailInterface[] a PokemonDetailInterface | null
+    loading: boolean;
+
+    // Error handling
+    isError?: boolean;
+    errorMessage?: string;
+}
+
+export const UsePokemonStore = create<PokemonContextType>()((set) => ({
     pokemons: [],
     pokemonDetail: null,
     loading: false,
