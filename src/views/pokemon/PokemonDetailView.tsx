@@ -2,12 +2,12 @@ import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {PokemonStats} from "./components/PokemonStats.tsx";
 import {Loading} from "../../components/Loading.tsx";
-import {UsePokemonStore} from "../../zustand/stores/UsePokemonStore.tsx";
+import {PokemonContextType, UsePokemonStore} from "../../zustand/stores/UsePokemonStore.tsx";
 
 export const PokemonDetailView = () => {
-    const getPokemonsById = UsePokemonStore((state) => state.getPokemonsById);
-    const pokemonDetail = UsePokemonStore((state) => state.pokemonDetail);
-    const loading = UsePokemonStore((state) => state.loading);
+    const getPokemonsById = UsePokemonStore((state: PokemonContextType) => state.getPokemonsById);
+    const pokemonDetail = UsePokemonStore((state: PokemonContextType) => state.pokemonDetail);
+    const loading = UsePokemonStore((state: PokemonContextType) => state.loading);
 
     // Se obtiene el ID del pokemon de la url
     const {id} = useParams<{ id: string }>();
