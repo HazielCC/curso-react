@@ -1,11 +1,20 @@
-import {useContext, useEffect} from "react";
-import PokemonContext from "../../context/pokemon/PokemonContext.tsx";
 import {PokemonList} from "./components/PokemonList.tsx";
 import {Loading} from "../../components/Loading.tsx";
 import {ErrorMessage} from "../../components/ErrorMessage.tsx";
+import {UsePokemonStore} from "../../zustand/stores/UsePokemonStore.tsx";
+import {useEffect} from "react";
 
+
+/**
+ * Vista principal de Pokémon
+ * Función con useContext para obtener los Pokémon
+ */
 export const PokemonView = () => {
-    const {getPokemons, pokemons, loading, isError, errorMessage} = useContext(PokemonContext);
+    const getPokemons = UsePokemonStore((state) => state.getPokemons);
+    const pokemons = UsePokemonStore((state) => state.pokemons);
+    const loading = UsePokemonStore((state) => state.loading);
+    const isError = UsePokemonStore((state) => state.isError);
+    const errorMessage = UsePokemonStore((state) => state.errorMessage);
 
     useEffect(() => {
         getPokemons().catch(null);
