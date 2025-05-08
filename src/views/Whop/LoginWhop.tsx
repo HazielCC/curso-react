@@ -1,4 +1,6 @@
-const CLIENT_ID = "i20atL0ft2RP-SZSFnkJsfueqFeglpE7aN5Of4YAs50"; // Tu Client ID de Whop
+// const CLIENT_ID = "i20atL0ft2RP-SZSFnkJsfueqFeglpE7aN5Of4YAs50"; // Tu Client ID de Whop
+// const REDIRECT_URI = "http://localhost:5173/callback-whop"; // Cambia esto por tu URL de redirección
+const CLIENT_ID = "hBdkzpN4Kzqi7lfTle-zxSrKtwFtnxDh8V7EsJ-tf8M"; // Tu Client ID de Whop
 const REDIRECT_URI = "http://localhost:5173/callback-whop"; // Cambia esto por tu URL de redirección
 
 const LoginWhop = () => {
