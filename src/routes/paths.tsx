@@ -7,5 +7,9 @@ export const paths = {
 
     pokemonView: "/pokemon",
     pokemonDetailView: "/pokemon-detail/:id", // :id es un parámetro dinámico
+
+    // Movies
+    movieView: "/movie",
+
     // Agrega más rutas según sea necesario
 };

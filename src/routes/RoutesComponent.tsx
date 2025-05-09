@@ -7,6 +7,7 @@ import {PokemonDetailView} from "../views/pokemon/PokemonDetailView.tsx";
 import {ScrollToTop} from "../components/ScrollToTop.tsx";
 import {CallBackView} from "../views/Whop/CallBackView.tsx";
 import LoginWhop from "../views/Whop/LoginWhop.tsx";
+import {MovieView} from "../views/Movies/MovieView.tsx";
 
 export const RoutesComponent = () => {
     return (
@@ -23,6 +24,9 @@ export const RoutesComponent = () => {
                 {/* Pokemon */}
                 <Route path={paths.pokemonView} element={<PokemonView/>}/>
                 <Route path={paths.pokemonDetailView} element={<PokemonDetailView/>}/>
+
+                {/* Movies */}
+                <Route path={paths.movieView} element={<MovieView/>}/>
 
                 {/*<Route path="/adding-items-page" element={<ExampleCards/>}/>*/}
                 {/*<Route path="/login" element={<LoginPage/>}/>*/}
