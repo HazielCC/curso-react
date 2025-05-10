@@ -5,8 +5,6 @@ import {PokemonView} from "../views/pokemon/PokemonView.tsx";
 import {paths} from "./paths.tsx";
 import {PokemonDetailView} from "../views/pokemon/PokemonDetailView.tsx";
 import {ScrollToTop} from "../components/ScrollToTop.tsx";
-import {CallBackView} from "../views/Whop/CallBackView.tsx";
-import LoginWhop from "../views/Whop/LoginWhop.tsx";
 import {MovieView} from "../views/Movies/MovieView.tsx";
 
 export const RoutesComponent = () => {
@@ -18,8 +16,8 @@ export const RoutesComponent = () => {
                 <Route path={paths.home} element={<MenuView/>}/>
 
                 {/*Whop*/}
-                <Route path={paths.loginWhop} element={<LoginWhop/>}/>
-                <Route path={paths.callBackView} element={<CallBackView/>}/>
+                {/*<Route path={paths.loginWhop} element={<LoginWhop/>}/>*/}
+                {/*<Route path={paths.callBackView} element={<CallBackView/>}/>*/}
 
                 {/* Pokemon */}
                 <Route path={paths.pokemonView} element={<PokemonView/>}/>
