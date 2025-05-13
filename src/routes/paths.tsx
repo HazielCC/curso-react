@@ -10,6 +10,7 @@ export const paths = {
 
     // Movies
     movieView: "/movie",
+    resultsView: "/movie/results/:id",
 
     // Agrega más rutas según sea necesario
 };

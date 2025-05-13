@@ -6,6 +6,7 @@ import {paths} from "./paths.tsx";
 import {PokemonDetailView} from "../views/pokemon/PokemonDetailView.tsx";
 import {ScrollToTop} from "../components/ScrollToTop.tsx";
 import {MovieView} from "../views/Movies/MovieView.tsx";
+import {ResultsView} from "../views/Movies/ResultsView.tsx";
 
 export const RoutesComponent = () => {
     return (
@@ -25,6 +26,7 @@ export const RoutesComponent = () => {
 
                 {/* Movies */}
                 <Route path={paths.movieView} element={<MovieView/>}/>
+                <Route path={paths.resultsView} element={<ResultsView/>}/>
 
                 {/*<Route path="/adding-items-page" element={<ExampleCards/>}/>*/}
                 {/*<Route path="/login" element={<LoginPage/>}/>*/}
