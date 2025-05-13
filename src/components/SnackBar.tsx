@@ -17,7 +17,7 @@ export const SnackBar = ({
                              onClose,
                              severity = "success",
                              message,
-                             autoHideDuration = 4000,
+                             autoHideDuration = 3000,
                              vertical = "top",
                              horizontal = "center"
                          }: SnackBarProps) => {

@@ -49,7 +49,6 @@ export const MovieView = () => {
                 <Grid
                     size={{xs: 12, md: 4}}
                     sx={{
-                        border: "1px solid red",
                         height: {xs: "30%", md: "100%"},
                     }}
                 >
@@ -59,7 +58,6 @@ export const MovieView = () => {
                     size={{xs: 12, md: 8}}
                     sx=
                         {{
-                            border: "1px solid blue",
                             height: {xs: "70%", md: "100%"},
                             display: "flex",
                             justifyContent: "center",
@@ -97,8 +95,9 @@ export const MovieView = () => {
                         </Button>
                         <Button
                             variant={"contained"}
+                            color={"info"}
+                             
                             sx={{
-                                backgroundColor: "#1976d2",
                                 color: "#fff",
                                 '&:focus': {
                                     outline: 'none'
