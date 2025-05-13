@@ -116,6 +116,8 @@ export const MovieView = () => {
                 onClose={handleClose}
                 severity="error"
                 message="Por favor ingresa una pélicula."
+                vertical={"bottom"}
+                horizontal={"right"}
             />
         </Box>
     );
