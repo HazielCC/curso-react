@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import {Box, Input, InputLabel, TextField} from "@mui/material";
+import {Box, Button, TextField, Typography} from "@mui/material";
 import cinema from "../../assets/cinema.webp";
 import "../../styles/images.css"
 
@@ -33,11 +33,28 @@ export const MovieView = () => {
                             justifyContent: "center",
                             alignItems: "center",
                             flexDirection: "column",
+                            padding: "2rem",
                         }}
                 >
-                    <h2>Este ocupa el 70%</h2>
-                    <TextField   label="Outlined"> Hola mundo</TextField >
-
+                    <Typography
+                        variant={"h1"}
+                        sx={{width: "100%", maxWidth: "400px", textAlign: "center"}}
+                    >
+                        Películas
+                    </Typography>
+                    <TextField
+                        label="Busca tu película"
+                        variant={"outlined"}
+                        sx={{
+                            width: "100%",
+                            maxWidth: "400px",
+                            backgroundColor: "#f4eded",
+                            borderRadius: "6px",
+                        }}
+                    />
+                    <Button>
+                        Limpiar Búsqueda
+                    </Button>
                 </Grid>
             </Grid>
         </Box>
