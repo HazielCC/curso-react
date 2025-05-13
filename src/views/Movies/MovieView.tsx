@@ -2,18 +2,23 @@ import Grid from "@mui/material/Grid";
 import {Box, Button, TextField, Typography} from "@mui/material";
 import cinema from "../../assets/cinema.webp";
 import "../../styles/images.css"
+import {ChangeEvent, useState} from "react";
 
 export const MovieView = () => {
+    const [search, setSearch] = useState("");
+    const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+        const {value} = event.target;
+        setSearch(value);
+    };
+
+    const handleClearSearch = () => {
+        setSearch("");
+    };
     return (
         <Box sx={{
-            width: "100vw",
-            height: "100vh",
-            overflow: "hidden",
+            width: "100vw", height: "100vh", overflow: "hidden",
         }}>
-            <Grid container sx={{
-                height: "100%",
-                display: "flex",
-            }}>
+            <Grid container sx={{height: "100%"}}>
                 <Grid
                     size={{xs: 12, md: 4}}
                     sx={{
@@ -36,12 +41,7 @@ export const MovieView = () => {
                             padding: "2rem",
                         }}
                 >
-                    <Typography
-                        variant={"h1"}
-                        sx={{width: "100%", maxWidth: "400px", textAlign: "center"}}
-                    >
-                        Películas
-                    </Typography>
+                    <Typography variant={"h1"}>Películas</Typography>
                     <TextField
                         label="Busca tu película"
                         variant={"outlined"}
@@ -49,12 +49,37 @@ export const MovieView = () => {
                             width: "100%",
                             maxWidth: "400px",
                             backgroundColor: "#f4eded",
-                            borderRadius: "6px",
                         }}
+                        value={search}
+                        onChange={handleSearch}
                     />
-                    <Button>
-                        Limpiar Búsqueda
-                    </Button>
+                    <Box sx={{
+                        justifyContent: "space-around",
+                        display: "flex",
+                        width: "100%",
+                        maxWidth: "400px",
+                        marginTop: "1rem",
+                    }}>
+                        <Button
+                            variant={"text"}
+                            color={"error"}
+                            sx={{'&:focus': {outline: 'none'}}}
+                            onClick={handleClearSearch}
+                        >
+                            Limpiar Búsqueda
+                        </Button>
+                        <Button
+                            variant={"contained"}
+                            sx={{
+                                backgroundColor: "#1976d2",
+                                color: "#fff",
+                                '&:focus': {
+                                    outline: 'none'
+                                }
+                            }}>
+                            Buscar
+                        </Button>
+                    </Box>
                 </Grid>
             </Grid>
         </Box>
