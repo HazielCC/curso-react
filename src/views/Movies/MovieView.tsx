@@ -1,11 +1,17 @@
 import Grid from "@mui/material/Grid";
-import {Box, Button, TextField, Typography} from "@mui/material";
+import {Box, Button, SnackbarCloseReason, TextField, Typography} from "@mui/material";
 import cinema from "../../assets/cinema.webp";
 import "../../styles/images.css"
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, SyntheticEvent, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {paths} from "../../routes/paths.tsx";
+import {SnackBar} from "../../components/SnackBar.tsx";
 
 export const MovieView = () => {
     const [search, setSearch] = useState("");
+    const [snackBarOpen, setSnackBarOpen] = useState(false);
+    const navigation = useNavigate();
+
     const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target;
         setSearch(value);
@@ -13,6 +19,27 @@ export const MovieView = () => {
 
     const handleClearSearch = () => {
         setSearch("");
+    };
+
+    const handleSearchClick = () => {
+        // Implement search functionality here
+        if (search.trim() === "") {
+            console.log("Please enter a search term.");
+            setSnackBarOpen(true);
+            return;
+        }
+        console.log("Searching for:", search);
+        navigation(`${paths.resultsView.replace(":id", search)}`);
+    }
+
+    const handleClose = (
+        _event?: SyntheticEvent | Event,
+        reason?: SnackbarCloseReason,
+    ) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackBarOpen(false);
     };
     return (
         <Box sx={{
@@ -76,12 +103,20 @@ export const MovieView = () => {
                                 '&:focus': {
                                     outline: 'none'
                                 }
-                            }}>
+                            }}
+                            onClick={handleSearchClick}
+                        >
                             Buscar
                         </Button>
                     </Box>
                 </Grid>
             </Grid>
+            <SnackBar
+                open={snackBarOpen}
+                onClose={handleClose}
+                severity="error"
+                message="Por favor ingresa una pélicula."
+            />
         </Box>
     );
 };
