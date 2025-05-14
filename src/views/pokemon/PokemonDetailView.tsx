@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {useEffect} from "react";
 import {PokemonStats} from "./components/PokemonStats.tsx";
 import {Loading} from "../../components/Loading.tsx";
-import {PokemonContextType, UsePokemonStore} from "../../zustand/stores/UsePokemonStore.tsx";
+import {PokemonContextType, UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
 
 export const PokemonDetailView = () => {
     const getPokemonsById = UsePokemonStore((state: PokemonContextType) => state.getPokemonsById);

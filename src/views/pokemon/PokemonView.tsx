@@ -1,7 +1,7 @@
 import {PokemonList} from "./components/PokemonList.tsx";
 import {Loading} from "../../components/Loading.tsx";
 import {ErrorMessage} from "../../components/ErrorMessage.tsx";
-import {UsePokemonStore} from "../../zustand/stores/UsePokemonStore.tsx";
+import {UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
 import {useEffect} from "react";
 
 
