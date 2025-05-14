@@ -1,7 +1,7 @@
 import {create} from "zustand/react";
-import {ApiCall} from "../../api/ApiCall.tsx";
-import {Pokemon} from "../../interfaces/pokemon/PokemonInterfaces.tsx";
-import {PokemonDetailInterface} from "../../interfaces/pokemon/PokemonDetailInterfaces.tsx";
+import {ApiCall} from "../api/ApiCall.tsx";
+import {Pokemon} from "../interfaces/pokemon/PokemonInterfaces.tsx";
+import {PokemonDetailInterface} from "../interfaces/pokemon/PokemonDetailInterfaces.tsx";
 
 export interface PokemonContextType {
     getPokemons: () => Promise<void>;
