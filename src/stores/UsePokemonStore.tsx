@@ -1,7 +1,7 @@
-import {create} from "zustand/react";
-import {ApiCall} from "../api/ApiCall.tsx";
-import {Pokemon} from "../interfaces/pokemon/PokemonInterfaces.tsx";
-import {PokemonDetailInterface} from "../interfaces/pokemon/PokemonDetailInterfaces.tsx";
+import { create } from "zustand/react";
+import { ApiCall } from "../api/ApiCall.tsx";
+import { PokemonDetailInterface } from "../interfaces/pokemon/PokemonDetailInterfaces.tsx";
+import { Pokemon } from "../interfaces/pokemon/PokemonInterfaces.tsx";
 
 export interface PokemonContextType {
     getPokemons: () => Promise<void>;
@@ -23,7 +23,7 @@ export const UsePokemonStore = create<PokemonContextType>()((set) => ({
     errorMessage: "",
 
     getPokemons: async () => {
-        set({loading: true, isError: false, errorMessage: ""});
+        set({ loading: true, isError: false, errorMessage: "" });
         try {
             const response = await ApiCall("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
             set({
@@ -42,9 +42,10 @@ export const UsePokemonStore = create<PokemonContextType>()((set) => ({
     },
 
     getPokemonsById: async (id: string) => {
-        set({loading: true, isError: false, errorMessage: ""});
+        set({ loading: true, isError: false, errorMessage: "" });
         try {
             const response = await ApiCall(`https://pokeapi.co/api/v2/pokemon/${id}`)
+            console.log(response);
             set({
                 pokemonDetail: response,
             });
