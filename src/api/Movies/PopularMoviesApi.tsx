@@ -5,7 +5,7 @@ import axios from "axios";
 
 export interface PopularMoviesContextType {
     getPopularMovies: () => Promise<void>;
-    popularMovies?: PopularMoviesInterface[] | null; // Cambiado de Result[] a Result | null
+    popularMovies?: PopularMoviesInterface | null; // Single PopularMoviesInterface object or null
     loading: boolean;
 
     // Error handling
@@ -14,7 +14,7 @@ export interface PopularMoviesContextType {
 }
 
 export const PopularMoviesApi = create<PopularMoviesContextType>()((set) => ({
-    popularMovies: [],
+    popularMovies: null,
     loading: false,
     isError: false,
     errorMessage: "",
@@ -22,7 +22,7 @@ export const PopularMoviesApi = create<PopularMoviesContextType>()((set) => ({
     getPopularMovies: async () => {
         set({loading: true, isError: false, errorMessage: ""});
         try {
-            const url = `${UrlBaseInterface.url_movie}/3/movie/popular`;
+            const url = `${UrlBaseInterface.url_movie}/3/trending/movie/day?language=en-US`;
             const response = await axios.get(url, {
                 headers: {
                     Authorization: `Bearer ${UrlBaseInterface.api_key}`,
