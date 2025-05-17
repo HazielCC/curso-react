@@ -22,7 +22,7 @@ export const CustomPalette: ColorInterface = {
         contrastText: '#fff'
     },
     secondary: {
-        main: '#dc004e',
+        main: '#eb2f30',
         light: '#e33371',
         dark: '#9a0036',
         contrastText: '#fff'

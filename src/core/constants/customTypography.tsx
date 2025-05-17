@@ -4,7 +4,6 @@ interface TypographyInterface {
         fontSize: string;
         fontWeight: number;
         lineHeight: number;
-        padding: string;
     };
     h2: {
         fontSize: string;
@@ -45,7 +44,6 @@ export const CustomTypography: TypographyInterface = {
         fontSize: '1.75rem',
         fontWeight: 700,
         lineHeight: 1.5,
-        padding: '0.5rem 0',
     },
     h2: {
         fontSize: '1.5rem',
