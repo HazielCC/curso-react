@@ -37,33 +37,33 @@ export const PokemonDetailView = () => {
     }));
 
 
+    const pokemonInfoItem = <Item
+        sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: CustomSpacing.small,
+            backgroundColor: (theme) => theme.palette.secondary.main,
+        }}>
+        <img
+            src="/assets/images/ic_info_8_bits.webp"
+            alt={pokemonDetail?.name}
+            style={{
+                height: "35px",
+                filter: "brightness(0) invert(1)"
+            }} />
+        <Typography variant={"h1"}
+            sx={{
+                color: (theme) => theme.palette.secondary.contrastText
+            }}
+        >Information</Typography>
+    </Item>;
+
     // Muestra la información del pokemon
     return (
         <Grid>
             <Grid container spacing={2}>
                 <Grid size={12}>
-                    <Item
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: CustomSpacing.small,
-                            backgroundColor: (theme) => theme.palette.secondary.main,
-                        }}>
-                        <img
-                            src="/assets/images/ic_info_8_bits.webp"
-                            alt={pokemonDetail?.name}
-                            style={{
-                                height: "35px",
-                                filter: "brightness(0) invert(1)"
-                            }}
-
-                        />
-                        <Typography variant={"h1"}
-                            sx={{
-                                color: (theme) => theme.palette.secondary.contrastText
-                            }}
-                        >Information</Typography>
-                    </Item>
+                    {pokemonInfoItem}
                 </Grid>
                 <Grid size={5}>
                     <Item>
@@ -74,11 +74,8 @@ export const PokemonDetailView = () => {
                         />
                     </Item>
                 </Grid>
-                <Grid size={7} container wrap="wrap" sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: (theme) => theme.palette.secondary.main,
+                <Grid container size={7} spacing={2} sx={{
+                    flexDirection: "column",
                 }}>
                     <Grid size={12}>
                         <Grid size={12}>
@@ -113,35 +110,21 @@ export const PokemonDetailView = () => {
                             </Item>
                         </Grid>
                     </Grid>
-                    <Grid size={12}>
-                        <Item>
-                            <Typography variant={"body1"}>Tipo: {pokemonDetail?.types.map((type) => type.type.name).join(", ")}</Typography>
-                        </Item>
-                    </Grid>
-                    <Grid size={6}>
-                        <Item>
-                            <Typography variant={"body1"}>Tipo: {pokemonDetail?.types.map((type) => type.type.name).join(", ")}</Typography>
-                        </Item>
-                    </Grid>
-                    <Grid size={6}>
-                        <Item>
-                            <Typography variant={"body1"}>Tipo: {pokemonDetail?.types.map((type) => type.type.name).join(", ")}</Typography>
-                        </Item>
-                    </Grid>
+                    {pokemonDetail?.types.map((typeObj, _idx, arr) => {
+                        const size = Math.floor(12 / arr.length);
+                        return (
+                            <Grid size={size} container key={typeObj.type.name} sx={{
+                                flexDirection: "column",
+                            }}>
+                                <Item>
+                                    <Typography variant={"body1"}>
+                                        {typeObj.type.name}
+                                    </Typography>
+                                </Item>
+                            </Grid>
+                        );
+                    })}
                 </Grid>
-
-
-                <Grid size={3}>
-                    <Item>
-                        <Typography variant={"body1"}>Altura: {pokemonDetail?.height}</Typography>
-                    </Item>
-                </Grid>
-                <Grid size={4}>
-                    <Item>
-                        <Typography variant={"body1"}>Peso: {pokemonDetail?.weight}</Typography>
-                    </Item>
-                </Grid>
-
             </Grid>
             {/* <PokemonStats stats={pokemonDetail?.stats ?? []} /> */}
         </Grid>
