@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
 import {paths} from "../routes/paths.tsx";
 import '../App.css'
+import {Box, Button, Typography} from "@mui/material";
+import {CustomSpacing} from "../core/constants/customSpacing.tsx";
 
 export const MenuView = () => {
     // const [searchParams] = useSearchParams();
@@ -10,25 +12,27 @@ export const MenuView = () => {
     //     setCode(code);
     // }
     return (
-        <div className="App">
-            <h1>Menú Principal</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to={paths.home}>Inicio</Link>
-                    </li>
-                    <li>
-                        <Link to={paths.pokemonView}>Ver Pokémon</Link>
-                    </li>
-                    <li>
-                        <Link to={paths.movieView}>Ver Películas</Link>
-                    </li>
-                    {/*<li>*/}
-                    {/*    <Link to={paths.loginWhop}>Ejemplo inicio de sesión Whop</Link>*/}
-                    {/*</li>*/}
-                    {/* Puedes agregar más enlaces según necesites */}
-                </ul>
-            </nav>
-        </div>
+        <Box>
+            <Typography variant={"h1"}>Menú Principal</Typography>
+            <Box component={"nav"} sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: CustomSpacing.small,
+            }}>
+                <Button variant="contained" component={Link} to={paths.home}>
+                    Inicio
+                </Button>
+                <Button variant="contained" component={Link} to={paths.pokemonView}>
+                    Ver Pokémon
+                </Button>
+                <Button variant="contained" component={Link} to={paths.movieView}>
+                    Ver Películas
+                </Button>
+                {/*<li>*/}
+                {/*    <Link to={paths.loginWhop}>Ejemplo inicio de sesión Whop</Link>*/}
+                {/*</li>*/}
+                {/* Puedes agregar más enlaces según necesites */}
+            </Box>
+        </Box>
     )
 };
