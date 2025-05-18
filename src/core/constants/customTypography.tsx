@@ -46,7 +46,7 @@ export const CustomTypography: TypographyInterface = {
         lineHeight: 1.5,
     },
     h2: {
-        fontSize: '1.5rem',
+        fontSize: '1.25rem',
         fontWeight: 600,
         lineHeight: 1.4,
         padding: '0.5rem 0',
