@@ -1,10 +1,12 @@
-import { Box, Grid, Paper, styled, Typography } from "@mui/material";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Loading } from "../../components/Loading.tsx";
-import { CustomSpacing } from "../../core/constants/customSpacing.tsx";
-import { capitalizeFirstLetter } from "../../core/utilities/InputsUtilities.tsx";
-import { PokemonContextType, UsePokemonStore } from "../../stores/UsePokemonStore.tsx";
+import {Box, Grid, Paper, styled, Typography} from "@mui/material";
+import {useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {Loading} from "../../components/Loading.tsx";
+import {CustomSpacing} from "../../core/constants/customSpacing.tsx";
+import {capitalizeFirstLetter} from "../../core/utilities/InputsUtilities.tsx";
+import {PokemonContextType, UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
+import {CustomBorderRadius} from "../../core/constants/customBorderRadius.tsx";
+import {CustomPadding} from "../../core/constants/customPading.tsx";
 
 export const PokemonDetailView = () => {
     const getPokemonsById = UsePokemonStore((state: PokemonContextType) => state.getPokemonsById);
@@ -12,7 +14,7 @@ export const PokemonDetailView = () => {
     const loading = UsePokemonStore((state: PokemonContextType) => state.loading);
 
     // Se obtiene el ID del pokemon de la url
-    const { id } = useParams<{ id: string }>();
+    const {id} = useParams<{ id: string }>();
     /* Cada vez que se cambie el ID es necesario mostrar su información */
     useEffect(() => {
         if (id != null) {
@@ -22,10 +24,10 @@ export const PokemonDetailView = () => {
 
     // Pantalla de cargando
     if (loading) {
-        return <Loading message="Cargando detalles del Pokemon" />
+        return <Loading message="Cargando detalles del Pokemon"/>
     }
 
-    const Item = styled(Paper)(({ theme }) => ({
+    const Item = styled(Paper)(({theme}) => ({
         backgroundColor: "#fff",
         ...theme.typography.body2,
         padding: theme.spacing(1),
@@ -50,11 +52,11 @@ export const PokemonDetailView = () => {
             style={{
                 height: "35px",
                 filter: "brightness(0) invert(1)"
-            }} />
+            }}/>
         <Typography variant={"h1"}
-            sx={{
-                color: (theme) => theme.palette.secondary.contrastText
-            }}
+                    sx={{
+                        color: (theme) => theme.palette.secondary.contrastText
+                    }}
         >Information</Typography>
     </Item>;
 
@@ -71,59 +73,72 @@ export const PokemonDetailView = () => {
                             src={pokemonDetail?.sprites.front_default}
                             alt={pokemonDetail?.name}
                             className="image"
+                            style={{
+                                maxHeight: "350px",
+                            }}
+
                         />
                     </Item>
+
                 </Grid>
                 <Grid container size={7} spacing={2} sx={{
                     flexDirection: "column",
                 }}>
                     <Grid size={12}>
-                        <Grid size={12}>
-                            <Item>
-                                <Box sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    textAlign: "left",
-                                    gap: CustomSpacing.small,
-                                    backgroundColor: (theme) => theme.palette.secondary.main,
-                                }}>
-                                    <img
-                                        src="/assets/images/pokebola.webp"
-                                        alt={pokemonDetail?.name}
-                                        style={{
-                                            width: "50px",
-                                            height: "50px",
-                                        }}
+                        <Item>
+                            <Box sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                textAlign: "left",
+                                gap: CustomSpacing.small,
+                                backgroundColor: (theme) => theme.palette.secondary.main,
+                            }}>
+                                <img
+                                    src="/assets/images/pokebola.webp"
+                                    alt={pokemonDetail?.name}
+                                    style={{
+                                        width: "50px",
+                                        height: "50px",
+                                    }}
+                                />
+                                <Typography
+                                    variant={"h2"}
+                                    sx={{
+                                        color: (theme) => theme.palette.secondary.contrastText
+                                    }}
+                                >
+                                    #{id} {capitalizeFirstLetter(pokemonDetail?.name ?? "")}
+                                </Typography>
+                            </Box>
 
-                                    />
+                            <Typography variant={"body1"}>{pokemonDetail?.name}</Typography>
+                        </Item>
+                    </Grid>
+                    <Grid>
+                        <Item>
+                            <Typography variant={"body1"}>Type</Typography>
+                            <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
+                                {pokemonDetail?.types.map((typeObj) => (
                                     <Typography
-                                        variant={"h2"}
+                                        key={typeObj.type.name}
+                                        variant={"body1"}
                                         sx={{
-                                            color: (theme) => theme.palette.secondary.contrastText
+                                            backgroundColor: (theme) => theme.palette.secondary.main,
+                                            color: (theme) => theme.palette.secondary.contrastText,
+                                            paddingInline: CustomPadding.medium,
+                                            paddingBlock: CustomPadding.small,
+                                            margin: CustomSpacing.small,
+                                            borderRadius: CustomBorderRadius.small,
+                                            textTransform: "capitalize",
+                                            fontWeight: "bold",
                                         }}
                                     >
-                                        #{id} {capitalizeFirstLetter(pokemonDetail?.name ?? "")}
-                                    </Typography>
-                                </Box>
-
-                                <Typography variant={"body1"}>{pokemonDetail?.name}</Typography>
-                            </Item>
-                        </Grid>
-                    </Grid>
-                    {pokemonDetail?.types.map((typeObj, _idx, arr) => {
-                        const size = Math.floor(12 / arr.length);
-                        return (
-                            <Grid size={size} container key={typeObj.type.name} sx={{
-                                flexDirection: "column",
-                            }}>
-                                <Item>
-                                    <Typography variant={"body1"}>
                                         {typeObj.type.name}
                                     </Typography>
-                                </Item>
-                            </Grid>
-                        );
-                    })}
+                                ))}
+                            </Box>
+                        </Item>
+                    </Grid>
                 </Grid>
             </Grid>
             {/* <PokemonStats stats={pokemonDetail?.stats ?? []} /> */}
