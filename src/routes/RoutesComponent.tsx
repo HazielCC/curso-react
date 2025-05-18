@@ -7,6 +7,8 @@ import {PokemonDetailView} from "../views/pokemon/PokemonDetailView.tsx";
 import {ScrollToTop} from "../components/ScrollToTop.tsx";
 import {MovieView} from "../views/Movies/MovieView.tsx";
 import {ResultsView} from "../views/Movies/ResultsView.tsx";
+import {CssBaseline, ThemeProvider} from "@mui/material";
+import {pokemonTheme} from "../core/theme/Theme.tsx";
 
 export const RoutesComponent = () => {
     return (
@@ -21,8 +23,22 @@ export const RoutesComponent = () => {
                 {/*<Route path={paths.callBackView} element={<CallBackView/>}/>*/}
 
                 {/* Pokemon */}
-                <Route path={paths.pokemonView} element={<PokemonView/>}/>
-                <Route path={paths.pokemonDetailView} element={<PokemonDetailView/>}/>
+                <Route
+                    path={paths.pokemonView}
+                    element={
+                        <ThemeProvider theme={pokemonTheme}>
+                            <CssBaseline/> <PokemonView/>
+                        </ThemeProvider>
+                    }
+                />
+                <Route
+                    path={paths.pokemonDetailView}
+                    element={
+                        <ThemeProvider theme={pokemonTheme}>
+                            <CssBaseline/> <PokemonDetailView/>
+                        </ThemeProvider>
+                    }
+                />
 
                 {/* Movies */}
                 <Route path={paths.movieView} element={<MovieView/>}/>
