@@ -3,10 +3,10 @@ import {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {Loading} from "../../components/Loading.tsx";
 import {CustomSpacing} from "../../core/constants/customSpacing.tsx";
-import {capitalizeFirstLetter} from "../../core/utilities/InputsUtilities.tsx";
 import {PokemonContextType, UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
 import {CustomBorderRadius} from "../../core/constants/customBorderRadius.tsx";
 import {CustomPadding} from "../../core/constants/customPading.tsx";
+import {PokemonStats} from "./components/PokemonStats.tsx";
 
 export const PokemonDetailView = () => {
     const getPokemonsById = UsePokemonStore((state: PokemonContextType) => state.getPokemonsById);
@@ -67,7 +67,35 @@ export const PokemonDetailView = () => {
                 <Grid size={12}>
                     {pokemonInfoItem}
                 </Grid>
-                <Grid size={5}>
+                <Grid size={4}>
+                    <Item sx={{
+                        marginBottom: CustomPadding.xsmall,
+                        backgroundColor: (theme) => theme.palette.secondary.main,
+                    }}>
+                        <Box sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: CustomSpacing.small,
+                        }}>
+                            <img
+                                src="/assets/images/pokebola.webp"
+                                alt={pokemonDetail?.name}
+                                style={{
+                                    width: "50px",
+                                    height: "50px",
+                                }}
+                            />
+                            <Typography
+                                variant={"h2"}
+                                sx={{
+                                    color: (theme) => theme.palette.secondary.contrastText,
+                                    textTransform: "capitalize",
+                                }}
+                            >
+                                #{id} {pokemonDetail?.name}
+                            </Typography>
+                        </Box>
+                    </Item>
                     <Item>
                         <img
                             src={pokemonDetail?.sprites.front_default}
@@ -81,41 +109,13 @@ export const PokemonDetailView = () => {
                     </Item>
 
                 </Grid>
-                <Grid container size={7} spacing={2} sx={{
+                <Grid container size={8} spacing={2} sx={{
                     flexDirection: "column",
                 }}>
-                    <Grid size={12}>
-                        <Item>
-                            <Box sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                textAlign: "left",
-                                gap: CustomSpacing.small,
-                                backgroundColor: (theme) => theme.palette.secondary.main,
-                            }}>
-                                <img
-                                    src="/assets/images/pokebola.webp"
-                                    alt={pokemonDetail?.name}
-                                    style={{
-                                        width: "50px",
-                                        height: "50px",
-                                    }}
-                                />
-                                <Typography
-                                    variant={"h2"}
-                                    sx={{
-                                        color: (theme) => theme.palette.secondary.contrastText
-                                    }}
-                                >
-                                    #{id} {capitalizeFirstLetter(pokemonDetail?.name ?? "")}
-                                </Typography>
-                            </Box>
-
-                            <Typography variant={"body1"}>{pokemonDetail?.name}</Typography>
-                        </Item>
-                    </Grid>
                     <Grid>
-                        <Item>
+                        <Item sx={{
+                            marginBottom: CustomPadding.xsmall,
+                        }}>
                             <Typography variant={"body1"}>Type</Typography>
                             <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
                                 {pokemonDetail?.types.map((typeObj) => (
@@ -138,10 +138,12 @@ export const PokemonDetailView = () => {
                                 ))}
                             </Box>
                         </Item>
+                        <Item>
+                            <PokemonStats stats={pokemonDetail?.stats ?? []}/>
+                        </Item>
                     </Grid>
                 </Grid>
             </Grid>
-            {/* <PokemonStats stats={pokemonDetail?.stats ?? []} /> */}
         </Grid>
     );
 };
