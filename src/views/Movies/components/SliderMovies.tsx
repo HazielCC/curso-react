@@ -8,8 +8,8 @@ export const SliderMovies = ({popularMovies}: Readonly<{ popularMovies: Result[]
             <ImageList
                 sx={{
                     display: "flex",
-                    overflowX: "auto",
-                    margin: "0, auto",
+                    // overflowX: "auto",
+                    // margin: "0, auto",
                 }}
                 gap={24}
             >
