@@ -3,6 +3,7 @@ import {Loading} from "../../components/Loading.tsx";
 import {ErrorMessage} from "../../components/ErrorMessage.tsx";
 import {UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
 import {useEffect} from "react";
+import {Typography} from "@mui/material";
 
 
 /**
@@ -28,7 +29,7 @@ export const PokemonView = () => {
         <div>
             {isError ? <ErrorMessage message={errorMessage ?? "Ocurrió un error"}/> : (
                 <>
-                    <h1>Pokémon</h1>
+                    <Typography variant={"h1"}>Pokemon</Typography>
                     <PokemonList pokemons={pokemons ?? []}/>
                 </>
             )}
