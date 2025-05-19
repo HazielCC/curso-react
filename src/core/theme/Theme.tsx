@@ -13,18 +13,18 @@ export const pokemonTheme = createTheme({
     typography: {
         fontFamily: `"8Bit", Arial, sans-serif`,
         h1: {
-            fontSize: "2rem",
+            fontSize: "1.5rem",
             fontWeight: 700,
             lineHeight: 1.5,
         },
         h2: {
-            fontSize: "1.5rem",
+            fontSize: "1rem",
             fontWeight: 600,
             lineHeight: 1.4,
             padding: "0.5rem 0",
         },
         h3: {
-            fontSize: "1.5rem",
+            fontSize: "0.75rem",
             fontWeight: 500,
             lineHeight: 1.3,
             padding: "0.5rem 0",
