@@ -6,7 +6,7 @@ export const PokemonList = ({pokemons}: { pokemons: Pokemon[] }) => {
     console.log(pokemons);
     return (
         <Box>
-            <Typography variant="h2"> Lista de Pokémons </Typography>
+            <Typography variant="h2">Lista de Pokemons</Typography>
             <List>
                 {pokemons.map((pokemon, index) => (
                     <ListItem key={index}>
