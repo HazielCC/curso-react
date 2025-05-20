@@ -9,6 +9,7 @@ import {MovieView} from "../views/Movies/MovieView.tsx";
 import {ResultsView} from "../views/Movies/ResultsView.tsx";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import {pokemonTheme} from "../core/theme/Theme.tsx";
+import {CounterView} from "../views/examples/CounterView.tsx";
 
 export const RoutesComponent = () => {
     return (
@@ -43,6 +44,9 @@ export const RoutesComponent = () => {
                 {/* Movies */}
                 <Route path={paths.movieView} element={<MovieView/>}/>
                 <Route path={paths.resultsView} element={<ResultsView/>}/>
+
+                {/* Examples */}
+                <Route path={paths.counterView} element={<CounterView/>}/>
 
                 {/*<Route path="/adding-items-page" element={<ExampleCards/>}/>*/}
                 {/*<Route path="/login" element={<LoginPage/>}/>*/}
