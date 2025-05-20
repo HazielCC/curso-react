@@ -34,8 +34,12 @@ export const MenuView = () => {
                     gap: CustomSpacing.small,
                 }}>
                     <Typography variant={"h2"}>Ejemplos</Typography>
-                    <Button variant="contained" component={Link} to={paths.counterView}>
-                        Ejemplo de Contador
+                    <Button variant="contained" component={Link} to={paths.counterExampleView}>
+                        Persistencia de Estado
+                    </Button>
+
+                    <Button variant="contained" component={Link} to={paths.tanStackExampleView}>
+                        TanStack Query
                     </Button>
                 </Box>
 
