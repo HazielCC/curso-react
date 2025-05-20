@@ -13,7 +13,8 @@ export const paths = {
     resultsView: "/movie/results/:id",
 
     // Examples
-    counterView: "/examples/counter",
+    counterExampleView: "/examples/counter",
+
 
     // Agrega más rutas según sea necesario
 };

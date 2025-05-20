@@ -10,8 +10,10 @@ import {ResultsView} from "../views/Movies/ResultsView.tsx";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import {pokemonTheme} from "../core/theme/Theme.tsx";
 import {CounterView} from "../views/examples/CounterView.tsx";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 export const RoutesComponent = () => {
+    const queryClient = new QueryClient();
     return (
         <BrowserRouter>
             <ScrollToTop/>
@@ -27,9 +29,12 @@ export const RoutesComponent = () => {
                 <Route
                     path={paths.pokemonView}
                     element={
-                        <ThemeProvider theme={pokemonTheme}>
-                            <CssBaseline/> <PokemonView/>
-                        </ThemeProvider>
+                        <QueryClientProvider client={queryClient}>
+                            <ThemeProvider theme={pokemonTheme}>
+                                <CssBaseline/> <PokemonView/>
+                            </ThemeProvider>
+                        </QueryClientProvider>
+
                     }
                 />
                 <Route
@@ -46,7 +51,7 @@ export const RoutesComponent = () => {
                 <Route path={paths.resultsView} element={<ResultsView/>}/>
 
                 {/* Examples */}
-                <Route path={paths.counterView} element={<CounterView/>}/>
+                <Route path={paths.counterExampleView} element={<CounterView/>}/>
 
                 {/*<Route path="/adding-items-page" element={<ExampleCards/>}/>*/}
                 {/*<Route path="/login" element={<LoginPage/>}/>*/}
