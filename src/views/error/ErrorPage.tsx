@@ -1,9 +1,21 @@
+import {Box, Typography} from "@mui/material";
+
 export const ErrorPage = () => {
     return (
-        <div>
-            <h1>
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100dvh',
+            }}>
+            <Typography variant={"h1"}>
                 Error 404: Página no encontrada
-            </h1>
-        </div>
+            </Typography>
+            <Typography variant={"h2"}>
+                Lo sentimos, la página que buscas no existe. :(
+            </Typography>
+        </Box>
     )
 }
