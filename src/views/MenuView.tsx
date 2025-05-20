@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom";
 import {paths} from "../routes/paths.tsx";
-import '../App.css'
 import {Box, Button, Typography} from "@mui/material";
 import {CustomSpacing} from "../core/constants/customSpacing.tsx";
 
@@ -28,6 +27,18 @@ export const MenuView = () => {
                 <Button variant="contained" component={Link} to={paths.movieView}>
                     Ver Películas
                 </Button>
+
+                <Box component={"nav"} sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: CustomSpacing.small,
+                }}>
+                    <Typography variant={"h2"}>Ejemplos</Typography>
+                    <Button variant="contained" component={Link} to={paths.counterView}>
+                        Ejemplo de Contador
+                    </Button>
+                </Box>
+
                 {/*<li>*/}
                 {/*    <Link to={paths.loginWhop}>Ejemplo inicio de sesión Whop</Link>*/}
                 {/*</li>*/}
