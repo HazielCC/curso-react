@@ -46,21 +46,16 @@ export const MovieView = () => {
     };
 
     return (
-        <Box
-            sx={{
-                width: "100dvw",
-                height: "100dvh",
-            }}
-        >
+        <Box>
             <Box sx={{
-                maxHeight: {xs: "350px", md: "450px"},
+                // maxHeight: {xs: "350px", md: "450px"},
                 backgroundImage: `url('/assets/images/cinema.webp')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 padding: '1rem',
             }}>
                 <Box sx={{
-                    width: "100%",
+                    // width: "100%",
                     maxWidth: "1080px",
                     color: "#fff",
                     margin: "auto",
@@ -74,7 +69,7 @@ export const MovieView = () => {
                         variant="outlined"
                         sx={{
                             width: "100%",
-                            backgroundColor: "#f4eded",
+                            backgroundColor: Theme => Theme.palette.secondary.contrastText,
                             borderRadius: CustomBorderRadius.medium,
                         }}
                         value={search}
@@ -113,11 +108,10 @@ export const MovieView = () => {
 
             </Box>
             <Box sx={{
-                width: "100%",
-                maxWidth: "1080px",
-                margin: "2rem auto",
-                padding: '1rem',
-
+                // width: "100%",
+                // maxWidth: "1080px",
+                // margin: "2rem auto",
+                // padding: '1rem',
             }}>
                 <Typography variant="h2" sx={{textAlign: 'left'}}>Películas Populares</Typography>
                 <SliderMovies popularMovies={popularMovies?.results ?? []}/>
