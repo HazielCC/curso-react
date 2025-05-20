@@ -1,14 +1,13 @@
-import { create } from "zustand/react";
-import { ApiCall } from "../api/ApiCall.tsx";
-import { PokemonDetailInterface } from "../interfaces/pokemon/PokemonDetailInterfaces.tsx";
-import { Pokemon } from "../interfaces/pokemon/PokemonInterfaces.tsx";
+import {create} from "zustand/react";
+import {ApiCall} from "../api/ApiCall.tsx";
+import {PokemonDetailInterface} from "../interfaces/pokemon/PokemonDetailInterfaces.tsx";
+import {Pokemon} from "../interfaces/pokemon/PokemonInterfaces.tsx";
 
 export interface PokemonContextType {
     getPokemons: () => Promise<void>;
     pokemons?: Pokemon[];
     getPokemonsById: (id: string) => Promise<void>;
     pokemonDetail?: PokemonDetailInterface | null; // Cambiado de PokemonDetailInterface[] a PokemonDetailInterface | null
-    loading: boolean;
 
     // Error handling
     isError?: boolean;
@@ -18,12 +17,11 @@ export interface PokemonContextType {
 export const UsePokemonStore = create<PokemonContextType>()((set) => ({
     pokemons: [],
     pokemonDetail: null,
-    loading: false,
     isError: false,
     errorMessage: "",
 
     getPokemons: async () => {
-        set({ loading: true, isError: false, errorMessage: "" });
+        set({isError: false, errorMessage: ""});
         try {
             const response = await ApiCall("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
             set({
@@ -34,15 +32,11 @@ export const UsePokemonStore = create<PokemonContextType>()((set) => ({
                 isError: true,
                 errorMessage: "Error al cargar los Pokémon" + error,
             });
-        } finally {
-            set({
-                loading: false,
-            });
         }
     },
 
     getPokemonsById: async (id: string) => {
-        set({ loading: true, isError: false, errorMessage: "" });
+        set({isError: false, errorMessage: ""});
         try {
             const response = await ApiCall(`https://pokeapi.co/api/v2/pokemon/${id}`)
             console.log(response);
@@ -53,10 +47,6 @@ export const UsePokemonStore = create<PokemonContextType>()((set) => ({
             set({
                 isError: true,
                 errorMessage: "Error al cargar el Pokémon" + error,
-            });
-        } finally {
-            set({
-                loading: false,
             });
         }
     },

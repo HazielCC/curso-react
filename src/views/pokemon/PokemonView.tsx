@@ -4,6 +4,7 @@ import {ErrorMessage} from "../../components/ErrorMessage.tsx";
 import {UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
 import {useEffect} from "react";
 import {Typography} from "@mui/material";
+import {useQuery} from "@tanstack/react-query";
 
 
 /**
@@ -11,18 +12,23 @@ import {Typography} from "@mui/material";
  * Función con useContext para obtener los Pokémon
  */
 export const PokemonView = () => {
-    const getPokemons = UsePokemonStore((state) => state.getPokemons);
-    const pokemons = UsePokemonStore((state) => state.pokemons);
-    const loading = UsePokemonStore((state) => state.loading);
-    const isError = UsePokemonStore((state) => state.isError);
-    const errorMessage = UsePokemonStore((state) => state.errorMessage);
+    const {getPokemons, pokemons, isError, errorMessage} = UsePokemonStore();
+
+    const {isLoading} = useQuery({
+        queryKey: ["pokemons"],
+        queryFn: getPokemons,
+        // onError: (error) => {
+        //     console.error("Error al cargar los Pokémon:", error);
+        // },
+    })
+
 
     useEffect(() => {
         getPokemons().catch(null);
     }, [getPokemons]);
 
     // Pantalla de cargando
-    if (loading) {
+    if (isLoading) {
         return <Loading message="Cargando todos los Pokemon"/>
     }
     return (
