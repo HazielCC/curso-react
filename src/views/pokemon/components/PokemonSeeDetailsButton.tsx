@@ -5,7 +5,6 @@ import {capitalizeFirstLetter} from "../../../core/utilities/InputsUtilities.tsx
 import {CustomPadding} from "../../../core/constants/customPading.tsx";
 
 export const PokemonSeeDetailsButton = ({name, url}: { name: string, url: string }) => {
-    console.log(name, url);
     // Se obtiene el ID del pokemon de la url
     const getIdFromUrl = (url: string) => {
         const urlParts = url.split("/");
