@@ -5,7 +5,6 @@ export const CounterView = () => {
     // This is a simple counter-example
     const {count, incrementCount, decrementCount, resetList} = UseCounterStore();
 
-
     function handleIncrement(): void {
         incrementCount()
     }
