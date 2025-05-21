@@ -37,10 +37,6 @@ export const MenuView = () => {
                     <Button variant="contained" component={Link} to={paths.counterExampleView}>
                         Persistencia de Estado
                     </Button>
-
-                    <Button variant="contained" component={Link} to={paths.tanStackExampleView}>
-                        TanStack Query
-                    </Button>
                 </Box>
 
                 {/*<li>*/}
