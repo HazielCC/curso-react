@@ -1,7 +1,6 @@
 import {Box, Grid, Paper, styled, Typography} from "@mui/material";
 import {useEffect} from "react";
 import {useParams} from "react-router-dom";
-import {Loading} from "../../components/Loading.tsx";
 import {CustomSpacing} from "../../core/constants/customSpacing.tsx";
 import {PokemonContextType, UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
 import {CustomBorderRadius} from "../../core/constants/customBorderRadius.tsx";
@@ -11,7 +10,7 @@ import {PokemonStats} from "./components/PokemonStats.tsx";
 export const PokemonDetailView = () => {
     const getPokemonsById = UsePokemonStore((state: PokemonContextType) => state.getPokemonsById);
     const pokemonDetail = UsePokemonStore((state: PokemonContextType) => state.pokemonDetail);
-    const loading = UsePokemonStore((state: PokemonContextType) => state.loading);
+    // const loading = UsePokemonStore((state: PokemonContextType) => state.loading);
 
     // Se obtiene el ID del pokemon de la url
     const {id} = useParams<{ id: string }>();
@@ -22,10 +21,10 @@ export const PokemonDetailView = () => {
         }
     }, [getPokemonsById, id]);
 
-    // Pantalla de cargando
-    if (loading) {
-        return <Loading message="Cargando detalles del Pokemon"/>
-    }
+    // // Pantalla de cargando
+    // if (loading) {
+    //     return <Loading message="Cargando detalles del Pokemon"/>
+    // }
 
     const Item = styled(Paper)(({theme}) => ({
         backgroundColor: "#fff",
