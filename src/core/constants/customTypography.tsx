@@ -74,4 +74,4 @@ export const CustomTypography: TypographyInterface = {
         lineHeight: 1.4,
     },
 
-}
+};

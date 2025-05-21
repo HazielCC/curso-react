@@ -39,4 +39,4 @@ export const UseCounterStore = create<UseCounterStore>()(
             name: 'position-storage',
         }, // (optional) by default, 'localStorage' is used
     ),
-)
+);

@@ -23,7 +23,7 @@ export const UsePokemonStore = create<PokemonContextType>()((set) => ({
     getPokemons: async () => {
         set({isError: false, errorMessage: ""});
         try {
-            const response = await ApiCall("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0")
+            const response = await ApiCall("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");
             set({
                 pokemons: response.results,
             });
@@ -38,7 +38,7 @@ export const UsePokemonStore = create<PokemonContextType>()((set) => ({
     getPokemonsById: async (id: string) => {
         set({isError: false, errorMessage: ""});
         try {
-            const response = await ApiCall(`https://pokeapi.co/api/v2/pokemon/${id}`)
+            const response = await ApiCall(`https://pokeapi.co/api/v2/pokemon/${id}`);
             console.log(response);
             set({
                 pokemonDetail: response,

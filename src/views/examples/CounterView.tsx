@@ -12,11 +12,11 @@ export const CounterView = () => {
 
     const handleReset = () => {
         resetList()
-    }
+    };
 
     const handleDecrement = () => {
         decrementCount()
-    }
+    };
 
     return (
         <Box>
