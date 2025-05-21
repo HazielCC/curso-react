@@ -1,9 +1,9 @@
 import {PokemonList} from "./components/PokemonList.tsx";
-import {Loading} from "../../components/Loading.tsx";
 import {ErrorMessage} from "../../components/ErrorMessage.tsx";
 import {UsePokemonStore} from "../../stores/UsePokemonStore.tsx";
 import {Typography} from "@mui/material";
 import {useQuery} from "@tanstack/react-query";
+import {ShimmerPokemonList} from "./Shimmer/ShimmerPokemonList.tsx";
 
 
 /**
@@ -17,9 +17,9 @@ export const PokemonView = () => {
         queryFn: getPokemons,
     });
 
-    // Pantalla de cargando
+    // Pantalla de cargando con efecto shimmer
     if (isLoading) {
-        return <Loading message="Cargando todos los Pokemon"/>
+        return <ShimmerPokemonList/>
     }
     return (
         <div>

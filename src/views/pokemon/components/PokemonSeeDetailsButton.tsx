@@ -16,6 +16,8 @@ export const PokemonSeeDetailsButton = ({name, url}: { name: string, url: string
             display: "flex",
             justifyContent: "space-between",
             width: "100%",
+            height: "3.5rem",
+            alignItems: "center",
             padding: CustomPadding.small,
             borderRadius: CustomBorderRadius.small,
             backgroundColor: "#f0f0f0",
