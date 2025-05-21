@@ -11,6 +11,7 @@ import {CssBaseline, ThemeProvider} from "@mui/material";
 import {pokemonTheme} from "../core/theme/Theme.tsx";
 import {CounterView} from "../views/examples/CounterView.tsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 export const RoutesComponent = () => {
     const queryClient = new QueryClient();
@@ -30,8 +31,10 @@ export const RoutesComponent = () => {
                     path={paths.pokemonView}
                     element={
                         <QueryClientProvider client={queryClient}>
+
                             <ThemeProvider theme={pokemonTheme}>
-                                <CssBaseline/> <PokemonView/>
+                                <CssBaseline/> <ReactQueryDevtools/>
+                                <PokemonView/>
                             </ThemeProvider>
                         </QueryClientProvider>
 
