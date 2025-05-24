@@ -10,23 +10,27 @@ export const PokemonSeeDetailsButton = ({name, url}: { name: string, url: string
         const urlParts = url.split("/");
         return urlParts[urlParts.length - 2];
     };
-
+    const CustomBox = (props: React.PropsWithChildren<{}>) => {
+        return (
+            <Box sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+                height: "3.5rem",
+                alignItems: "center",
+                padding: CustomPadding.small,
+                borderRadius: CustomBorderRadius.small,
+                backgroundColor: "#f0f0f0",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            }} {...props} />
+        );
+    };
     return (
-        <Box sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-            height: "3.5rem",
-            alignItems: "center",
-            padding: CustomPadding.small,
-            borderRadius: CustomBorderRadius.small,
-            backgroundColor: "#f0f0f0",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-        }}>
+        <CustomBox>
             <Typography variant={"h3"}>{capitalizeFirstLetter(name)}</Typography>
             <Button variant="text" component={Link} to={`/pokemon-detail/${getIdFromUrl(url)}`}>
                 ver detalles
             </Button>
-        </Box>
+        </CustomBox>
     );
 };

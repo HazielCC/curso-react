@@ -12,7 +12,7 @@ import {ShimmerPokemonList} from "./Shimmer/ShimmerPokemonList.tsx";
 export const PokemonView = () => {
     const {getPokemons, errorMessage} = UsePokemonStore();
 
-    const {isLoading, isError, data} = useQuery({
+    const {isLoading, isError} = useQuery({
         queryKey: ["pokemons"],
         queryFn: getPokemons,
     });
@@ -26,7 +26,7 @@ export const PokemonView = () => {
             {isError ? <ErrorMessage message={errorMessage ?? "Ocurrió un error"}/> : (
                 <>
                     <Typography variant={"h1"}>Pokemon</Typography>
-                    <PokemonList pokemons={data ?? []}/>
+                    <PokemonList/>
                 </>
             )}
         </div>
