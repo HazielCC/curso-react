@@ -4,7 +4,7 @@ import {PokemonDetailInterface} from "../interfaces/pokemon/PokemonDetailInterfa
 import {Pokemon} from "../interfaces/pokemon/PokemonInterfaces.tsx";
 
 export interface PokemonContextType {
-    getPokemons: () => Promise<void>;
+    fetchPokemons: () => Promise<void>;
     pokemons?: Pokemon[];
     getPokemonsById: (id: string) => Promise<void>;
     pokemonDetail?: PokemonDetailInterface | null; // Cambiado de PokemonDetailInterface[] a PokemonDetailInterface | null
@@ -19,7 +19,7 @@ export const UsePokemonStore = create<PokemonContextType>()((set) => ({
     pokemonDetail: null,
     errorMessage: "",
 
-    getPokemons: async () => {
+    fetchPokemons: async () => {
         set({errorMessage: ""});
         try {
             const response = await ApiCall("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");

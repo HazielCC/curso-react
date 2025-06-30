@@ -33,7 +33,6 @@ export function PokemonStats({stats}: Readonly<{ stats: Stat[] }>) {
                                     {
                                         display: "flex",
                                         alignItems: "center",
-                                        justifyContent: "space-between",
                                         gap: CustomSpacing.small,
                                     }
                                 }>

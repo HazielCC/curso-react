@@ -21,10 +21,6 @@ export const PokemonDetailView = () => {
         }
     }, [getPokemonsById, id]);
 
-    // // Pantalla de cargando
-    // if (loading) {
-    //     return <Loading message="Cargando detalles del Pokemon"/>
-    // }
 
     const Item = styled(Paper)(({theme}) => ({
         backgroundColor: "#fff",
@@ -63,19 +59,17 @@ export const PokemonDetailView = () => {
     return (
         <Grid>
             <Grid container spacing={2}>
+                {/* Header */}
                 <Grid size={12}>
                     {pokemonInfoItem}
                 </Grid>
-                <Grid size={4}>
+                {/* Information */}
+                <Grid size={{xs: 12, md: 4}}>
                     <Item sx={{
                         marginBottom: CustomPadding.xsmall,
                         backgroundColor: (theme) => theme.palette.secondary.main,
                     }}>
-                        <Box sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: CustomSpacing.small,
-                        }}>
+                        <Box sx={{display: "flex", alignItems: "center", gap: CustomSpacing.small}}>
                             <img
                                 src="/assets/images/pokebola.webp"
                                 alt={pokemonDetail?.name}
@@ -95,6 +89,8 @@ export const PokemonDetailView = () => {
                             </Typography>
                         </Box>
                     </Item>
+
+                    {/* Image */}
                     <Item>
                         <img
                             src={pokemonDetail?.sprites.front_default}
@@ -102,13 +98,13 @@ export const PokemonDetailView = () => {
                             className="image"
                             style={{
                                 maxHeight: "350px",
+                                width: "100%",
                             }}
-
                         />
                     </Item>
 
                 </Grid>
-                <Grid container size={8} spacing={2} sx={{
+                <Grid container size={{xs: 12, md: 8}} spacing={2} sx={{
                     flexDirection: "column",
                 }}>
                     <Grid>
@@ -128,8 +124,6 @@ export const PokemonDetailView = () => {
                                             paddingBlock: CustomPadding.small,
                                             margin: CustomSpacing.small,
                                             borderRadius: CustomBorderRadius.small,
-                                            textTransform: "capitalize",
-                                            fontWeight: "bold",
                                         }}
                                     >
                                         {typeObj.type.name}

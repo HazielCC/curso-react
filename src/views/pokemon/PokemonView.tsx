@@ -10,11 +10,13 @@ import {ShimmerPokemonList} from "./Shimmer/ShimmerPokemonList.tsx";
  * Vista principal de Pokémon
  */
 export const PokemonView = () => {
-    const {getPokemons, errorMessage} = UsePokemonStore();
+    const {fetchPokemons, errorMessage} = UsePokemonStore();
 
     const {isLoading, isError} = useQuery({
         queryKey: ["pokemons"],
-        queryFn: getPokemons,
+        queryFn: fetchPokemons,
+        refetchOnWindowFocus: false,
+        staleTime: Infinity
     });
 
     // Pantalla de cargando con efecto shimmer
